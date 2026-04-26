@@ -9,8 +9,6 @@ import org.example.service.*;
 import org.example.util.FlywayMigration;
 import org.example.util.HibernateUtil;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -21,7 +19,7 @@ public class Main {
 
         ClientCrudService clientService = new ClientCrudServiceImpl();
         PlanetService planetService = new PlanetServiceImpl();
-        TicketService ticketService = new TicketService();
+        TicketCrudService ticketService = new TicketCrudServiceImpl();
 
         Client client = clientService.create("Alex Test");
 

@@ -7,8 +7,9 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class TicketDao {
+public class TicketDaoServiceImpl implements TicketDaoService {
 
+    @Override
     public void save(Ticket ticket) {
         Transaction tx = null;
 
@@ -22,18 +23,21 @@ public class TicketDao {
         }
     }
 
+    @Override
     public Ticket getById(Long id) {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.find(Ticket.class, id);
         }
     }
 
+    @Override
     public List<Ticket> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery("from Ticket", Ticket.class).list();
         }
     }
 
+    @Override
     public void delete(Ticket ticket) {
         Transaction tx = null;
 

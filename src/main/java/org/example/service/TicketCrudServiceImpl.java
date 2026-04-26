@@ -9,10 +9,11 @@ import org.example.entity.Ticket;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class TicketService {
+public class TicketCrudServiceImpl implements TicketCrudService {
 
     private final TicketDaoService ticketDao = new TicketDaoServiceImpl();
 
+    @Override
     public Ticket createTicket(Client client, Planet from, Planet to) {
 
         if (client == null) {
@@ -42,14 +43,17 @@ public class TicketService {
         return ticket;
     }
 
+    @Override
     public Ticket getById(Long id) {
         return ticketDao.getById(id);
     }
 
+    @Override
     public List<Ticket> getAll() {
         return ticketDao.getAll();
     }
 
+    @Override
     public void delete(Ticket ticket) {
         if (ticket == null || ticket.getId() == null) {
             throw new IllegalArgumentException("Ticket must exist");
